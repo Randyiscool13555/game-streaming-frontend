@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Clock, Users, Wifi } from 'lucide-react';
 
-const API_URL = 'http://192.168.4.236:3001';
+const API_URL = 'http://35.141.83.120:3001';
 
 const GAMES = [
   { id: 'roblox', name: 'Roblox', platform: 'Standalone', image: '🎮' },
@@ -20,7 +20,6 @@ export default function GameStreamingPlatform() {
   const [status, setStatus] = useState(null);
   const [userCode, setUserCode] = useState('');
 
-  // Fetch status from backend
   useEffect(() => {
     const fetchStatus = async () => {
       try {
@@ -34,7 +33,7 @@ export default function GameStreamingPlatform() {
 
     if (isAuthenticated) {
       fetchStatus();
-      const interval = setInterval(fetchStatus, 2000); // Update every 2 seconds
+      const interval = setInterval(fetchStatus, 2000);
       return () => clearInterval(interval);
     }
   }, [isAuthenticated]);
